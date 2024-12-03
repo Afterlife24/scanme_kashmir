@@ -48,7 +48,7 @@ function Landingpage() {
     return (
       <div className="loading-screen">
         <img src={generalpics.suraj_img} alt="surajlogo" />
-        Powered by&nbsp;
+        Propulsé par&nbsp;
         <span className="scanme_logo">
           <img src={icons.scanme_logo} alt="scanmelogo" />
         </span>

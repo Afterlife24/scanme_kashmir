@@ -5,7 +5,7 @@ import { icons } from '../../assets/icons/icons'
 const Footer = () => {
   return (
    <footer className='footer'>
-    Powered by <img src={icons.scanme_logo} alt="scanme_logo" />
+    Propulsé par<img src={icons.scanme_logo} alt="scanme_logo" />
    </footer>
   )
 }

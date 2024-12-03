@@ -54,9 +54,10 @@
   align-items: center;
   justify-content: space-around;
   margin-bottom: 15px;
-  border: 2px solid black;
-  border-radius: 20px;
-  background-color: rgb(200, 221, 233);
+
+  border-radius: 10px;
+  /* background-color: rgb(200, 221, 233); */
+  background-color: #cfcbe1;
   padding: 10px;
 }
 
@@ -106,7 +107,7 @@ p {
   width: 60%;
 }
 
-.added-item-edit + button > img {
+.added-item-edit+button>img {
   width: 80%;
 }
 
@@ -120,7 +121,7 @@ p {
   text-align: end;
 }
 
-.go-back {
+/* .go-back {
   padding: 0.5rem 0.8rem;
   border-radius: 20px;
   border: none;
@@ -132,7 +133,73 @@ p {
   border-radius: 20px;
   border: none;
   margin: 0.5rem;
+} */
+
+.go-back {
+  padding: 0.8rem 0.7rem;
+  border-radius: 20px;
+  border: none;
+  margin: 0.5rem;
+  background-color: #f44336;
+  /* Red background */
+  color: white;
+  /* White text color */
+  font-size: 16px;
+  /* Increase font size */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Add shadow */
+  transition: background-color 0.3s, transform 0.2s;
+  /* Smooth transitions */
 }
+
+.go-back:hover {
+  background-color: #d32f2f;
+  /* Darker red on hover */
+  transform: translateY(-2px);
+  /* Lift effect on hover */
+}
+
+.send-order {
+  padding: 0.8rem 3rem;
+  border-radius: 20px;
+  border: none;
+  margin: 0.5rem;
+  background-color: #4caf50;
+  /* Green background */
+  color: white;
+  /* White text color */
+  font-size: 16px;
+  /* Increase font size */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Add shadow */
+  transition: background-color 0.3s, transform 0.2s;
+  /* Smooth transitions */
+}
+
+.send-order:hover {
+  background-color: #388e3c;
+  /* Darker green on hover */
+  transform: translateY(-2px);
+  /* Lift effect on hover */
+}
+
+.send-order:disabled {
+  background-color: #b0b0b0;
+  /* Gray background for disabled button */
+  color: #6c6c6c;
+  /* Lighter gray text */
+  cursor: not-allowed;
+  /* Show not-allowed cursor */
+  box-shadow: none;
+  /* Remove shadow */
+  opacity: 0.7;
+  /* Slight transparency */
+}
+
 
 .your-orders {
   margin-top: 20px;
@@ -172,4 +239,132 @@ p {
 .orders-total-cost {
   text-align: end;
   margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.scrolling-text-container {
+  width: 100%;
+  /* Full width of the container */
+  overflow: hidden;
+  /* Hides the text once it moves out of the view */
+  background-color: linear-gradient(#fff7f2, #efd6c7);
+  /* Optional: Adds a background to make it noticeable */
+  color: #f8d7da;
+  /* Text color */
+  padding: 10px 0;
+  /* Adds padding to make it more readable */
+  box-sizing: border-box;
+  position: relative;
+}
+
+.scrolling-text {
+  display: inline-block;
+  color: rgb(26, 25, 25);
+  white-space: nowrap;
+  /* Prevents the text from wrapping to the next line */
+  position: relative;
+  animation: scroll-left 15s linear infinite;
+  /* Continuous scrolling */
+  transform: translateX(100%);
+  /* Set the initial position to right of the container */
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+    /* Start from the right (outside the container) */
+  }
+
+  100% {
+    transform: translateX(-100%);
+    /* Move to the left, disappearing after it's out */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* Styling for the success message */
+.order-success-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeOut 3s forwards;
+}
+
+/* Fade-out animation for success message */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+}
+
+/* Media queries for mobile responsiveness */
+@media (max-width: 600px) {
+  .order-success-message {
+    width: 80%;
+    /* Adjust width for smaller screens */
+    font-size: 14px;
+    /* Smaller font size on mobile */
+    padding: 12px;
+    /* Reduce padding */
+    top: 10px;
+    /* Adjust top position for mobile */
+  }
+}
+
+@media (max-width: 400px) {
+  .order-success-message {
+    width: 90%;
+    /* Further reduce width on very small screens */
+    font-size: 12px;
+    /* Smaller font size for extra small screens */
+    padding: 10px;
+    /* Further reduce padding */
+    top: 8px;
+    /* Adjust top position for very small screens */
+  }
 }

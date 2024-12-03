@@ -81,7 +81,7 @@ const Hambermenuoptions = ({ setopt }) => {
             className="hamber-menu-go-back-button-option"
             onClick={() => setopt(false)}
           >
-            close
+            Fermer
           </button>
           <footer>
             <Footer />
