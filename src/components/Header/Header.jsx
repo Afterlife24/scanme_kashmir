@@ -49,7 +49,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
 
   const sendReservationData = async () => {
     try {
-      const response = await fetch("https://server3-server3.gofastapi.com/reserveTable", {
+      const response = await fetch("https://server-kashmir.gofastapi.com/reserveTable", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
