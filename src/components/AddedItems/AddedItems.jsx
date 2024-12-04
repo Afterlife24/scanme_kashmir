@@ -920,7 +920,7 @@ const AddedItems = () => {
   useEffect(() => {
     // Check if today is Wednesday
     const today = new Date().getDay(); // 0 = Sunday, 1 = Monday, ..., 3 = Wednesday
-    setIsWednesday(today === 4);
+    setIsWednesday(today === 3);
   }, []);
 
 
