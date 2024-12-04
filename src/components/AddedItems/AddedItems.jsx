@@ -920,7 +920,7 @@ const AddedItems = () => {
   useEffect(() => {
     // Check if today is Wednesday
     const today = new Date().getDay(); // 0 = Sunday, 1 = Monday, ..., 3 = Wednesday
-    setIsWednesday(today === 3);
+    setIsWednesday(today === 4);
   }, []);
 
 
@@ -983,7 +983,7 @@ const AddedItems = () => {
     // Check if the current time falls within any of the allowed ranges
     const isAllowed = 
         isWithinAllowedRange(10, 30, 14, 0) || // 10:30 AM to 2:00 PM
-        isWithinAllowedRange(18, 30, 24, 0);  // 6:30 PM to 10:00 PM
+        isWithinAllowedRange(14, 30, 24, 0);  // 6:30 PM to 10:00 PM
 
     return !isAllowed; // Restrict if not in the allowed range
 };
@@ -1027,7 +1027,7 @@ const AddedItems = () => {
 
     try {
       setLoading(true);
-      const response = await fetch('https://server-kashmir.gofastapi.com/sendOrder', {
+      const response = await fetch('https://kashmir-client.gofastapi.com/sendOrder', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

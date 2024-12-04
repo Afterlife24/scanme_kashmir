@@ -33,7 +33,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
 
     if (name === "date") {
       const selectedDate = new Date(value);
-      if (selectedDate.getDay() === 3) { // 3 = Wednesday
+      if (selectedDate.getDay() === 4) { // 3 = Wednesday
         toast.error("Reservations are not allowed on Wednesdays.", { position: "top-right" });
         return;
       }
@@ -49,7 +49,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
 
   const sendReservationData = async () => {
     try {
-      const response = await fetch("https://server-kashmir.gofastapi.com/reserveTable", {
+      const response = await fetch("https://kashmir-client.gofastapi.com/reserveTable", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +83,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
   // Function to check if it's Wednesday
   const isWednesday = () => {
     const today = new Date();
-    return today.getDay() === 3; // 3 = Wednesday
+    return today.getDay() === 4; // 3 = Wednesday
   };
 
   return (
