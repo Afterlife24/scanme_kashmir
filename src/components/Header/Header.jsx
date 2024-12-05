@@ -101,13 +101,13 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
 
         {!isMenu && (
           <div className="welcome">
-            <h2>SURAJ☀️</h2>
+            <h2>KASHMIR</h2>
           </div>
         )}
 
         {isMenu && (
           <div className="welcome">
-            <h2>SURAJ☀️</h2>
+            <h2>KASHMIR</h2>
           </div>
         )}
 
@@ -131,7 +131,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
       {/* Conditional container for Wednesday */}
       {isWednesday() && (
         <div className="wednesday-message">
-          <h3>We are not serving on Wednesdays</h3>
+          <h3>Nous ne servons pas mercredi</h3>
         </div>
       )}
 
@@ -141,14 +141,14 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
             onClick={toggleFormVisibility}
             className="toggle-form-btn"
           >
-            {isFormVisible ? "Close Reservation Form" : "APPUYEZ POUR RÉSERVER UNE TABLE"}
+            {isFormVisible ? "FERMER LE FORMULAIRE DE RÉSERVATION" : "APPUYEZ POUR RÉSERVER UNE TABLE"}
           </button>
 
           {isFormVisible && (
             <div className="reservation-form">
               {/* Reservation timing notice */}
                   <p className="reservation-timing-notice">
-                    Reserve between <br></br> 10:30 AM to 2:00 PM and 6:30 PM to 10:00 PM  
+                    Réservez entre  <br></br> 10h30 et 14h00 et entre 18h30 et 22h00  
                   </p>
               <form className="reservation-row">
                 <div className="reservation-input">

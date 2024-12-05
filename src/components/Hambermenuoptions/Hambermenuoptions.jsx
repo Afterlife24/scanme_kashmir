@@ -52,7 +52,7 @@ const Hambermenuoptions = ({ setopt }) => {
       <div className="hamber-menu" ref={menuRef}>
         <div className="hamber-menu-image" ref={imageRef}>
           <a href="#">
-            <img src={generalpics.scanme_img} alt="afterlife" />
+            <img src={generalpics.suraj_img} alt="afterlife" />
           </a>
         </div>
         <div className="hamber-menu-options" ref={optionsRef}>
