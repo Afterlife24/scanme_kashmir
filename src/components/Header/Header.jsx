@@ -208,7 +208,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                     <option value="" disabled>
                       Persons
                     </option>
-                    {[...Array(20).keys()].map((num) => (
+                    {[...Array(50).keys()].map((num) => (
                       <option key={num + 1} value={num + 1}>
                         {num + 1}
                       </option>
