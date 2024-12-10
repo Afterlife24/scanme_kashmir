@@ -1155,31 +1155,34 @@ const AddedItems = () => {
                 {orders.map((order, index) => (
                   <li key={index}>
                     <div className="order">
-                      {/* <h3>Numéro de table : {order.tableNumber}</h3> */}
-                      
-                      <h4>ID de jeton: {order.tokenId}</h4> {/* Display the token ID here */}
-                      <ul>
-                        {order.dishes.map((dish, dishIndex) => (
-                          <li key={dishIndex}>
-                            <div className="order-item">
-                              <img
-                                src={dish.image}
-                                alt={dish.name}
-                                className="order-item-image"
-                              />
-                              <div className="order-item-info">
-                                <h4>{dish.name}</h4>
-                                <p>Quantity: {dish.quantity}</p>
-                                <p>Price: {dish.price}</p>
-                              </div>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="order-total-cost">
-                        <h4>Montant total: ${order.total.toFixed(2)}</h4>
-                      </div>
-                    </div>
+  {/* Only show table number if it's not 0 */}
+  {order.tableNumber !== 0 && (
+    <h3>Numéro de table : {order.tableNumber}</h3>
+  )}
+  <h4>ID de jeton: {order.tokenId}</h4> {/* Display the token ID here */}
+  <ul>
+    {order.dishes.map((dish, dishIndex) => (
+      <li key={dishIndex}>
+        <div className="order-item">
+          <img
+            src={dish.image}
+            alt={dish.name}
+            className="order-item-image"
+          />
+          <div className="order-item-info">
+            <h4>{dish.name}</h4>
+            <p>Quantity: {dish.quantity}</p>
+            <p>Price: {dish.price}</p>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ul>
+  <div className="order-total-cost">
+    <h4>Montant total: ${order.total.toFixed(2)}</h4>
+  </div>
+</div>
+
                   </li>
                 ))}
               </ul>
