@@ -1156,9 +1156,7 @@ const AddedItems = () => {
                   <li key={index}>
                     <div className="order">
                       {/* <h3>Numéro de table : {order.tableNumber}</h3> */}
-                      {tableNum && (
-                          <h3>Numéro de table : {order.tableNumber}</h3>
-                      )}
+                      
                       <h4>ID de jeton: {order.tokenId}</h4> {/* Display the token ID here */}
                       <ul>
                         {order.dishes.map((dish, dishIndex) => (
