@@ -236,6 +236,22 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
         </>
       )}
 
+      {!isAddpage && !isMenu && (
+        <>
+          <div className="wrap-input-17">
+            <div className="search-box">
+              <button className="btn-search">🔍</button>
+              <input
+                onChange={onSearchChange}
+                type="text"
+                className="input-search"
+                placeholder="Search..."
+              />
+            </div>
+            </div>
+        </>
+      )}
+
       <ToastContainer />
     </>
   );
@@ -243,3 +259,4 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
 
 export default Header;
 
+              
