@@ -915,13 +915,9 @@ const AddedItems = () => {
   const [orderSent, setOrderSent] = useState(false);
   const [tokenId, setTokenId] = useState(''); // State to store the token ID
   const [successMessage, setSuccessMessage] = useState(''); // State to show success message
-  const [isWednesday, setIsWednesday] = useState(false);
+  const [isWednesday] = useState(false);
 
-  useEffect(() => {
-    // Check if today is Wednesday
-    const today = new Date().getDay(); // 0 = Sunday, 1 = Monday, ..., 3 = Wednesday
-    setIsWednesday(today === 3);
-  }, []);
+  
 
 
 
@@ -1069,7 +1065,7 @@ const AddedItems = () => {
         <ToastContainer />
 
         {/* Marquee notification when the order is restricted */}
-        {!isWednesday && tableNum === 0 && isOrderRestrictedTime() && (
+        { tableNum === 0 && isOrderRestrictedTime() && (
           <div className="scrolling-text-container">
               <p className="scrolling-text">
                  ❗❗ Order  between 10:30 AM to 2:00 PM and 6:30 PM to 10:00 PM❗❗
@@ -1140,7 +1136,7 @@ const AddedItems = () => {
           <button
             className="send-order"
             onClick={sendOrder}
-            disabled={loading || isWednesday} // Disable on Wednesday
+            disabled={loading} // Disable on Wednesday
           >
             {loading ? "Sending..." : "envoi"}
           </button>

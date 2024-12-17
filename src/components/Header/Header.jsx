@@ -30,15 +30,6 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
 
   const handleReservationChange = (e) => {
     const { name, value } = e.target;
-
-    if (name === "date") {
-      const selectedDate = new Date(value);
-      if (selectedDate.getDay() === 3) { // 3 = Wednesday
-        toast.error("Reservations are not allowed on Wednesdays.", { position: "top-right" });
-        return;
-      }
-    }
-
     setReservation((prev) => ({
       ...prev,
       [name]: value,
@@ -78,12 +69,6 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
     sendReservationData();
     setReservation({ name: "", phone: "", date: "", time: "", persons: "" });
     setIsFormVisible(false);
-  };
-
-  // Function to check if it's Wednesday
-  const isWednesday = () => {
-    const today = new Date();
-    return today.getDay() === 3; // 3 = Wednesday
   };
 
   return (
@@ -128,13 +113,6 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
         )}
       </div>
 
-      {/* Conditional container for Wednesday */}
-      {isWednesday() && (
-        <div className="wednesday-message">
-          <h3>Nous ne servons pas mercredi</h3>
-        </div>
-      )}
-
       {!isAddpage && !isMenu && tableNum === 0 && (
         <>
           <button
@@ -147,9 +125,9 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
           {isFormVisible && (
             <div className="reservation-form">
               {/* Reservation timing notice */}
-                  <p className="reservation-timing-notice">
-                    Réservez entre  <br></br> 10h30 et 14h00 et entre 18h30 et 22h00  
-                  </p>
+              <p className="reservation-timing-notice">
+                Réservez entre <br /> 10h30 et 14h00 et entre 18h30 et 22h00
+              </p>
               <form className="reservation-row">
                 <div className="reservation-input">
                   <input
@@ -248,7 +226,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                 placeholder="Search..."
               />
             </div>
-            </div>
+          </div>
         </>
       )}
 
@@ -258,5 +236,3 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
 }
 
 export default Header;
-
-              
