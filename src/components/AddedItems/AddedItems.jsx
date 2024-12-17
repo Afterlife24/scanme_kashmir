@@ -998,7 +998,7 @@ const AddedItems = () => {
 
     // Check if the table number is 0 and it's within the restricted hours
     if (tableNum === 0 && isOrderRestrictedTime()) {
-      toast.error("Orders cannot be placed between 11 PM and 6 AM.");
+      toast.error("Orders cannot be placed between 10.30 to 14.00  and 18.30 to 22.");
       return;
     }
 
