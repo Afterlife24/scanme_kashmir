@@ -1027,7 +1027,7 @@ const AddedItems = () => {
 
     try {
       setLoading(true);
-      const response = await fetch('https://kashmir-client.gofastapi.com/sendOrder', {
+      const response = await fetch('https://server3-kashmir.gofastapi.com/sendOrder', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
