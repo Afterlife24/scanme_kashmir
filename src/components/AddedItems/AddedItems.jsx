@@ -979,7 +979,7 @@ const AddedItems = () => {
     // Check if the current time falls within any of the allowed ranges
     const isAllowed = 
         isWithinAllowedRange(10, 30, 14, 0) || // 10:30 AM to 2:00 PM
-        isWithinAllowedRange(14, 30, 24, 0);  // 6:30 PM to 10:00 PM
+        isWithinAllowedRange(18, 30, 22, 0);  // 6:30 PM to 10:00 PM
 
     return !isAllowed; // Restrict if not in the allowed range
 };
