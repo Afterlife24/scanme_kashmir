@@ -524,11 +524,11 @@ transparent;
   font-weight: bold;
   text-transform: uppercase;
 }
-.combinations-desc{
+
+.combinations-desc {
   font-size: 1rem;
   margin: 2px;
   margin-bottom: 0.4rem;
-
 }
 
 .combinations-list-container {
@@ -538,11 +538,11 @@ transparent;
 
 .combinations-list {
   display: flex;
-  justify-content: flex-start; /* Changed from center to flex-start */
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory; /* Ensure smooth scrolling */
+  scroll-snap-type: x mandatory;
   margin-top: 10px;
 }
 
@@ -550,40 +550,118 @@ transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #dfdaf3; /* Changed to white to match the background of the dishes */
+  background-color: #dfdaf3;
   border-radius: 10px;
   padding: 10px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6); /* Increased inner shadow intensity */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
   flex: 0 0 auto;
-  width: 150px;
-  height: 210px;
+  width: 170px;
+  height: 260px;
   margin: 0;
-  scroll-snap-align: start; /* Make sure each item snaps to start */
-  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for the shadow change */
+  scroll-snap-align: start;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .combination-item:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Increased outer shadow intensity on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .combination-item-thumbnail {
-  width: 80%;
-  height: 200px;
+  width: 100%;
+  /* Ensures the image fits the container */
+  height: 130px;
   object-fit: cover;
   border-radius: 10%;
 }
 
 .combination-item-name {
-  font-size: 16px;
-  color: #000000; /* Changed to black to match the text color */
+  font-size: 14px;
+  color: #000000;
   margin-top: 10px;
-  margin-bottom: 8px; /* Added margin-bottom to separate from the container */
+  margin-bottom: 8px;
+  text-align: center;
+  line-height: 1.2;
+  height: 2.4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .combination-item-price {
   font-size: 14px;
   color: #000000;
   margin-top: 8px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .combinations-header {
+    font-size: 20px;
+    /* Smaller font for headers */
+  }
+
+  .combinations-list {
+    gap: 8px;
+    /* Reduce the gap between items */
+  }
+
+  .combination-item {
+    width: 140px;
+    /* Reduce item width */
+    height: 220px;
+    /* Adjust height accordingly */
+  }
+
+  .combination-item-thumbnail {
+    height: 100px;
+    /* Smaller image height */
+  }
+
+  .combination-item-name {
+    font-size: 12px;
+    /* Slightly smaller text for item name */
+  }
+
+  .combination-item-price {
+    font-size: 12px;
+    /* Smaller text for price */
+  }
+}
+
+@media (max-width: 480px) {
+  .combinations-header {
+    font-size: 18px;
+    /* Further reduce header font size */
+  }
+
+  .combinations-desc {
+    font-size: 0.9rem;
+    /* Adjust description font size */
+  }
+
+  .combination-item {
+    width: 120px;
+    /* Further reduce item width */
+    height: 200px;
+    /* Adjust height accordingly */
+  }
+
+  .combination-item-thumbnail {
+    height: 90px;
+    /* Reduce image height */
+  }
+
+  .combination-item-name {
+    font-size: 11px;
+    /* Smaller text for item name */
+  }
+
+  .combination-item-price {
+    font-size: 11px;
+    /* Smaller text for price */
+  }
 }
 
 .loading-screen {
