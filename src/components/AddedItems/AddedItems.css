@@ -412,6 +412,7 @@ p {
   width: 95%;
   max-width: 500px;
   animation: fadeIn 0.3s ease-in-out;
+  position: relative;
 }
 
 /* Title */
@@ -540,4 +541,25 @@ p {
   /* Optional: Adjust text color for readability */
   font-size: 1rem;
   /* Optional: Adjust font size */
+}
+
+/* Close Button */
+.otp-verification-content .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+  z-index: 1100;
+  /* Ensure it's above other content */
+}
+
+.otp-verification-content .close-button:hover {
+  color: #dc3545;
+  /* Red color on hover */
+  transform: scale(1.1);
 }
