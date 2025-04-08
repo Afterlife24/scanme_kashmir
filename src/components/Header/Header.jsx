@@ -18,6 +18,7 @@
 //     date: "",
 //     time: "",
 //     persons: "",
+//     email:"",
 //   });
 
 //   const handleMenuoption = () => {
@@ -40,7 +41,7 @@
 
 //   const sendReservationData = async () => {
 //     try {
-//       const response = await fetch("https://server3-kashmir.gofastapi.com/reserveTable", {
+//       const response = await fetch("https://kashmir-server4.gofastapi.com/reserveTable", {
 //         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
@@ -194,6 +195,18 @@
 //                   </select>
 //                 </div>
 
+//                 <div className="reservation-input">
+//                     <input
+//                     type="email"
+//                     name="email"
+//                     value={reservation.email}
+//                     onChange={handleReservationChange}
+//                     required
+//                     placeholder="Email"
+//                     className="reservation-email"
+//                     />
+//                 </div>
+
 //                 <button
 //                   type="button"
 //                   onClick={handleReservationSubmit}
@@ -238,17 +251,6 @@
 // export default Header;
 
 
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { icons } from "../../assets/icons/icons";
@@ -263,13 +265,14 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
   const navigate = useNavigate();
   const [option, setOption] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [reservation, setReservation] = useState({
     name: "",
     phone: "",
     date: "",
     time: "",
     persons: "",
-    email:"",
+    email: "",
   });
 
   const handleMenuoption = () => {
@@ -291,6 +294,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
   const isFormComplete = Object.values(reservation).every((value) => value.trim() !== "");
 
   const sendReservationData = async () => {
+    setIsLoading(true);
     try {
       const response = await fetch("https://kashmir-server4.gofastapi.com/reserveTable", {
         method: "POST",
@@ -302,25 +306,26 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
 
       if (response.ok) {
         const result = await response.json();
-        toast.success("Reservation successful!", { position: "top-right" });
+        toast.success("Réservation réussie !", { position: "top-right" });
+        setReservation({ name: "", phone: "", date: "", time: "", persons: "", email: "" });
+        setIsFormVisible(false);
       } else {
-        toast.error("Failed to reserve. Please try again.", { position: "top-right" });
+        toast.error("Échec de la réservation. Veuillez réessayer.", { position: "top-right" });
       }
     } catch (error) {
-      console.error("Error sending reservation:", error);
-      toast.error("An error occurred. Please try again later.", { position: "top-right" });
+      console.error("Erreur lors de l'envoi de la réservation:", error);
+      toast.error("Une erreur est survenue. Veuillez réessayer plus tard.", { position: "top-right" });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleReservationSubmit = () => {
     if (!isFormComplete) {
-      toast.error("Please fill in all the details before submitting.", { position: "top-right" });
+      toast.error("Veuillez remplir tous les détails avant de soumettre.", { position: "top-right" });
       return;
     }
-
     sendReservationData();
-    setReservation({ name: "", phone: "", date: "", time: "", persons: "" });
-    setIsFormVisible(false);
   };
 
   return (
@@ -338,13 +343,13 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
 
         {!isMenu && (
           <div className="welcome">
-            <h2>KASHMIR</h2>
+            <h2>Kashmir</h2>
           </div>
         )}
 
         {isMenu && (
           <div className="welcome">
-            <h2>KASHMIR</h2>
+            <h2>Kashmir</h2>
           </div>
         )}
 
@@ -352,14 +357,14 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
           <img
             src={icons.home_icon}
             onClick={() => navigate("/")}
-            alt="Home"
+            alt="Accueil"
             className="home-icon"
           />
         ) : (
           <img
             src={icons.pallet_icon}
             onClick={() => navigate("/added-items")}
-            alt="Pallet"
+            alt="Palette"
             className="pallet-icon"
           />
         )}
@@ -370,13 +375,14 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
           <button
             onClick={toggleFormVisibility}
             className="toggle-form-btn"
+            disabled={isLoading}
           >
             {isFormVisible ? "FERMER LE FORMULAIRE DE RÉSERVATION" : "APPUYEZ POUR RÉSERVER UNE TABLE"}
           </button>
 
           {isFormVisible && (
             <div className="reservation-form">
-              {/* Reservation timing notice */}
+              {/* Avis sur les horaires de réservation */}
               <p className="reservation-timing-notice">
                 Réservez entre <br /> 10h30 et 14h00 et entre 18h30 et 22h00
               </p>
@@ -388,8 +394,9 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                     value={reservation.name}
                     onChange={handleReservationChange}
                     required
-                    placeholder="Name"
+                    placeholder="Nom"
                     className="reservation-name"
+                    disabled={isLoading}
                   />
                 </div>
 
@@ -400,8 +407,9 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                     value={reservation.phone}
                     onChange={handleReservationChange}
                     required
-                    placeholder="Phone"
+                    placeholder="Téléphone"
                     className="reservation-phone"
+                    disabled={isLoading}
                   />
                 </div>
 
@@ -413,6 +421,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                     onChange={handleReservationChange}
                     required
                     className="reservation-date"
+                    disabled={isLoading}
                   />
                 </div>
 
@@ -424,6 +433,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                     onChange={handleReservationChange}
                     required
                     className="reservation-time"
+                    disabled={isLoading}
                   />
                 </div>
 
@@ -434,9 +444,10 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                     onChange={handleReservationChange}
                     required
                     className="reservation-persons"
+                    disabled={isLoading}
                   >
                     <option value="" disabled>
-                      Persons
+                      Personnes
                     </option>
                     {[...Array(50).keys()].map((num) => (
                       <option key={num + 1} value={num + 1}>
@@ -447,7 +458,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                 </div>
 
                 <div className="reservation-input">
-                    <input
+                  <input
                     type="email"
                     name="email"
                     value={reservation.email}
@@ -455,16 +466,17 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                     required
                     placeholder="Email"
                     className="reservation-email"
-                    />
+                    disabled={isLoading}
+                  />
                 </div>
 
                 <button
                   type="button"
                   onClick={handleReservationSubmit}
                   className="reservation-btn"
-                  disabled={!isFormComplete}
+                  disabled={!isFormComplete || isLoading}
                 >
-                  Reserve
+                  {isLoading ? "Traitement en cours..." : "Réserver"}
                 </button>
               </form>
             </div>
@@ -487,7 +499,7 @@ function Header({ onSearchChange, isMenu, isAddpage }) {
                 onChange={onSearchChange}
                 type="text"
                 className="input-search"
-                placeholder="Search..."
+                placeholder="Rechercher..."
               />
             </div>
           </div>
